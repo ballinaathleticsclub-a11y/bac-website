@@ -101,80 +101,187 @@
   }
 
   /* ════════════════════════════════════════════════════════════
-     LIVE RESULTS — reads straight from the handicap app's API.
+     LIVE RESULTS — reads straight from the handicap app’s API.
      Guard on element existence so this only runs on pages that
-     include a results container (#rbody).
-     Change APP_URL to https://season.ballinaathletics.club once
-     that subdomain is pointed at the Vercel app.
+     include a results section (#rbody).
      ════════════════════════════════════════════════════════════ */
-  var APP_URL='https://bac-handicap.vercel.app';
+  var APP_URL=’https://bac-handicap.vercel.app’;
 
-  var rbody=document.getElementById('rbody');
+  var rbody=document.getElementById(‘rbody’);
   if(!rbody)return; /* not a results page — stop here */
 
-  var weekline=document.getElementById('results-weekline');
-  var filter=document.getElementById('dist-filter');
-  var allResults=[],latestWeek=null,curDist='all';
-
-  var DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  /* ── Helpers ── */
+  var DAYS=[‘Sun’,’Mon’,’Tue’,’Wed’,’Thu’,’Fri’,’Sat’];
+  var MON=[‘Jan’,’Feb’,’Mar’,’Apr’,’May’,’Jun’,’Jul’,’Aug’,’Sep’,’Oct’,’Nov’,’Dec’];
   function fmtDate(iso){
-    if(!iso)return'';
-    var p=iso.split('-');
+    if(!iso)return’’;
+    var p=iso.split(‘-’);
     var d=new Date(+p[0],+p[1]-1,+p[2]);
-    return DAYS[d.getDay()]+' '+(+p[2])+' '+MON[+p[1]-1]+' '+p[0];
+    return DAYS[d.getDay()]+’ ‘+(+p[2])+’ ‘+MON[+p[1]-1]+’ ‘+p[0];
   }
   function esc(s){
-    return String(s==null?'':s).replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});
+    return String(s==null?’’:s).replace(/[&<>]/g,function(c){return{‘&’:’&amp;’,’<’:’&lt;’,’>’:’&gt;’}[c];});
   }
-  function stateRow(html){rbody.innerHTML='<tr><td colspan="4" class="rstate">'+html+'</td></tr>';}
+  function setHtml(id,html){var el=document.getElementById(id);if(el)el.innerHTML=html;}
+  function msg(id,cls,txt){setHtml(id,’<div class="’+cls+’">’+txt+’</div>’);}
 
-  function render(){
-    if(!allResults.length){return;}
-    var rows=allResults.filter(function(r){return r.week===latestWeek;});
-    if(curDist!=='all'){rows=rows.filter(function(r){return Number(r.distance)===Number(curDist);});}
+  /* ── Tabs ── */
+  var tabBtns=rbody.querySelectorAll(‘.tab-btn’);
+  var tabPanels=rbody.querySelectorAll(‘.tab-panel’);
+  tabBtns.forEach(function(btn){
+    btn.addEventListener(‘click’,function(){
+      tabBtns.forEach(function(b){b.classList.remove(‘is-active’);b.setAttribute(‘aria-selected’,’false’);});
+      tabPanels.forEach(function(p){p.classList.remove(‘is-active’);p.hidden=true;});
+      btn.classList.add(‘is-active’);
+      btn.setAttribute(‘aria-selected’,’true’);
+      var panel=document.getElementById(btn.getAttribute(‘aria-controls’));
+      if(panel){panel.classList.add(‘is-active’);panel.hidden=false;}
+    });
+  });
+
+  /* ── Results data ── */
+  var allResults=[];
+  var weekSel=document.getElementById(‘week-sel’);
+  var distSel=document.getElementById(‘dist-sel’);
+
+  function renderResults(){
+    if(!allResults.length){
+      msg(‘results-out’,’r-empty’,’Results will appear here the morning after the first race of the season.’);
+      return;
+    }
+    var week=weekSel?parseInt(weekSel.value,10):null;
+    var dist=distSel?distSel.value:’’;
+    var rows=allResults.filter(function(r){
+      if(week&&r.week!==week)return false;
+      if(dist&&String(r.distance)!==dist)return false;
+      return true;
+    });
     rows.sort(function(a,b){
       if(a.distance!==b.distance)return a.distance-b.distance;
-      if((b.points||0)!==(a.points||0))return(b.points||0)-(a.points||0);
-      return String(a.finishTime).localeCompare(String(b.finishTime));
+      return String(a.finishTime||’’).localeCompare(String(b.finishTime||’’));
     });
-    if(!rows.length){stateRow('No '+(curDist==='all'?'':curDist+'K ')+'runners recorded for this week.');return;}
-    rbody.innerHTML=rows.map(function(r){
-      return '<tr>'+
-        '<td class="r-name">'+esc(r.name)+'</td>'+
-        '<td class="r-dist">'+esc(r.distance)+'K</td>'+
-        '<td class="num">'+esc(r.finishTime)+'</td>'+
-        '<td class="num r-pts">'+esc(r.points)+'</td>'+
-      '</tr>';
-    }).join('');
+    if(!rows.length){
+      msg(‘results-out’,’r-empty’,’No results for the selected filters.’);
+      return;
+    }
+    var html=’<div class="r-table-wrap"><table class="r-table"><thead><tr>’+
+      ‘<th>Place</th><th>Name</th><th>Dist</th><th>Start</th><th>Finish</th><th>Pts</th>’+
+      ‘</tr></thead><tbody>’+
+      rows.map(function(r){
+        return ‘<tr>’+
+          ‘<td class="placing">’+esc(r.placing||’-’)+’</td>’+
+          ‘<td class="name">’+esc(r.name)+’</td>’+
+          ‘<td class="dist-’+esc(r.distance)+’">’+esc(r.distance)+’K</td>’+
+          ‘<td>’+esc(r.handicap?r.handicap+’\’’:’--’)+’</td>’+
+          ‘<td>’+esc(r.finishTime||’--’)+’</td>’+
+          ‘<td>’+esc(r.points||’-’)+’</td>’+
+          ‘</tr>’;
+      }).join(‘’)+
+      ‘</tbody></table></div>’;
+    setHtml(‘results-out’,html);
   }
 
-  if(filter){
-    filter.addEventListener('click',function(e){
-      var b=e.target.closest('.chip');if(!b)return;
-      curDist=b.getAttribute('data-d');
-      filter.querySelectorAll('.chip').forEach(function(c){c.classList.toggle('is-on',c===b);});
-      render();
+  if(weekSel)weekSel.addEventListener(‘change’,renderResults);
+  if(distSel)distSel.addEventListener(‘change’,renderResults);
+
+  /* ── Handicaps data ── */
+  var allHandicaps=[];
+  var hcapFilt=document.getElementById(‘hcap-filter’);
+  var hcapDist=’’;
+
+  function renderHandicaps(){
+    var rows=allHandicaps.filter(function(r){
+      return hcapDist===’’||String(r.distance)===hcapDist;
+    });
+    rows.sort(function(a,b){return String(a.name||’’).localeCompare(String(b.name||’’));});
+    if(!rows.length){
+      msg(‘handicaps-out’,’r-empty’,’No handicaps found for the selected distance.’);
+      return;
+    }
+    var html=’<div class="r-table-wrap"><table class="r-table"><thead><tr>’+
+      ‘<th>Name</th><th>Dist</th><th>Handicap</th><th>Updated</th>’+
+      ‘</tr></thead><tbody>’+
+      rows.map(function(r){
+        return ‘<tr>’+
+          ‘<td class="name">’+esc(r.name)+’</td>’+
+          ‘<td class="dist-’+esc(r.distance)+’">’+esc(r.distance)+’K</td>’+
+          ‘<td style="font-family:var(--mono)">’+esc(r.handicap||’--’)+’\’</td>’+
+          ‘<td style="font-family:var(--mono);font-size:.8rem">’+esc(r.lastUpdated?fmtDate(r.lastUpdated):’--’)+’</td>’+
+          ‘</tr>’;
+      }).join(‘’)+
+      ‘</tbody></table></div>’;
+    setHtml(‘handicaps-out’,html);
+  }
+
+  if(hcapFilt){
+    hcapFilt.addEventListener(‘click’,function(e){
+      var btn=e.target.closest(‘.hcap-btn’);if(!btn)return;
+      hcapFilt.querySelectorAll(‘.hcap-btn’).forEach(function(b){b.classList.remove(‘active’);});
+      btn.classList.add(‘active’);
+      hcapDist=btn.getAttribute(‘data-dist’)||’’;
+      renderHandicaps();
     });
   }
 
-  fetch(APP_URL+'/api/data?type=results')
-    .then(function(resp){if(!resp.ok)throw new Error('HTTP '+resp.status);return resp.json();})
+  /* ── Monthly prizes data ── */
+  function renderMonthly(data){
+    if(!data||!data.length){
+      msg(‘monthly-out’,’r-empty’,’Monthly prize leaders will appear here once enough races have been run this season.’);
+      return;
+    }
+    var html=’<div class="r-table-wrap"><table class="r-table"><thead><tr>’+
+      ‘<th>Month</th><th>Name</th><th>Distance</th><th>Points</th>’+
+      ‘</tr></thead><tbody>’+
+      data.map(function(r){
+        return ‘<tr>’+
+          ‘<td style="font-family:var(--mono)">’+esc(r.month||r.period||’--’)+’</td>’+
+          ‘<td class="name">’+esc(r.name||’--’)+’</td>’+
+          ‘<td>’+esc(r.distance?r.distance+’K’:’--’)+’</td>’+
+          ‘<td>’+esc(r.points||’--’)+’</td>’+
+          ‘</tr>’;
+      }).join(‘’)+
+      ‘</tbody></table></div>’;
+    setHtml(‘monthly-out’,html);
+  }
+
+  /* ── Fetch everything in parallel ── */
+  var p1=fetch(APP_URL+’/api/data?type=results’)
+    .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
     .then(function(data){
       allResults=Array.isArray(data)?data:[];
-      if(!allResults.length){
-        stateRow('Results will appear here the morning after the first race of the season.');
-        if(weekline)weekline.textContent='';
-        return;
+      /* Populate week selector */
+      if(weekSel){
+        var weeks=[];
+        allResults.forEach(function(r){if(r.week&&weeks.indexOf(r.week)<0)weeks.push(r.week);});
+        weeks.sort(function(a,b){return b-a;});
+        weekSel.innerHTML=weeks.map(function(w){
+          var first=allResults.filter(function(r){return r.week===w;})[0];
+          var label=’Week ‘+w+(first&&first.date?’ – ‘+fmtDate(first.date):’’);
+          return ‘<option value="’+w+’">’+esc(label)+’</option>’;
+        }).join(‘’);
+        if(!weeks.length)weekSel.innerHTML=’<option>No races yet</option>’;
       }
-      latestWeek=allResults.reduce(function(m,r){return Math.max(m,r.week||0);},0);
-      var first=allResults.filter(function(r){return r.week===latestWeek;})[0];
-      if(weekline)weekline.textContent='Showing week '+latestWeek+(first&&first.date?' · '+fmtDate(first.date):'');
-      render();
+      renderResults();
     })
     .catch(function(){
-      stateRow('Couldn’t load this week’s results just now. <a href="'+APP_URL+'/results.html" target="_blank" rel="noopener">View them in the season app &rsaquo;</a>');
-      if(weekline)weekline.textContent='';
+      msg(‘results-out’,’r-error’,’Could not load results. <a href="’+esc(APP_URL)+’/results.html" target="_blank" rel="noopener">View in the season app &rsaquo;</a>’);
+    });
+
+  var p2=fetch(APP_URL+’/api/data?type=handicaps’)
+    .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
+    .then(function(data){
+      allHandicaps=Array.isArray(data)?data:[];
+      renderHandicaps();
+    })
+    .catch(function(){
+      msg(‘handicaps-out’,’r-error’,’Could not load handicaps. <a href="’+esc(APP_URL)+’" target="_blank" rel="noopener">View in the season app &rsaquo;</a>’);
+    });
+
+  var p3=fetch(APP_URL+’/api/data?type=monthly-prizes’)
+    .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
+    .then(function(data){renderMonthly(Array.isArray(data)?data:[]);})
+    .catch(function(){
+      msg(‘monthly-out’,’r-error’,’Could not load monthly prizes. <a href="’+esc(APP_URL)+’" target="_blank" rel="noopener">View in the season app &rsaquo;</a>’);
     });
 
 })();

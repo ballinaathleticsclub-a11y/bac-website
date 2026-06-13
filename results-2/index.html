@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Results | Ballina Athletics Club</title>
+<meta name="description" content="Live race results, current handicaps, and monthly prize leaders for Ballina Athletics Club's Sunday season at Shelly Beach.">
+<meta property="og:title" content="Results | Ballina Athletics Club">
+<meta property="og:description" content="Live results, handicaps, and monthly prize leaders from Ballina Athletics Club.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_AU">
+<meta property="og:url" content="https://ballinaathletics.club/results-2/">
+<link rel="canonical" href="https://ballinaathletics.club/results-2/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800;900&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+<style>
+/* Results-specific styles */
+.r-controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:20px}
+.r-select{font-family:var(--mono);font-size:.82rem;padding:8px 14px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--navy);cursor:pointer}
+.r-table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+.r-table{width:100%;border-collapse:collapse;font-size:.88rem}
+.r-table th{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);background:var(--sky);white-space:nowrap}
+.r-table td{padding:9px 14px;border-bottom:1px solid var(--line);color:var(--black);white-space:nowrap}
+.r-table tr:last-child td{border-bottom:none}
+.r-table tr:hover td{background:var(--sky)}
+.r-table .placing{font-family:var(--display);font-weight:800;font-size:1.05rem;color:var(--navy)}
+.r-table .name{font-weight:600;color:var(--navy);white-space:normal}
+.r-table .dist-1{color:var(--blue-deep)}
+.r-table .dist-3{color:var(--navy)}
+.r-table .dist-6{color:#666}
+.r-loading{padding:40px;text-align:center;font-family:var(--mono);font-size:.85rem;color:var(--blue)}
+.r-empty{padding:40px;text-align:center;font-family:var(--mono);font-size:.85rem;color:var(--black);opacity:.6}
+.r-error{padding:40px;text-align:center;font-family:var(--mono);font-size:.85rem;color:#c0392b}
+.hcap-filter{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.hcap-btn{font-family:var(--mono);font-size:.78rem;padding:6px 14px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--navy);cursor:pointer;transition:background .15s}
+.hcap-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="/" aria-label="Ballina Athletics Club home">
+      <span class="brand-mark" aria-hidden="true">B</span>
+      <span class="brand-name">Ballina Athletics Club<span>Est. on Shelly Beach</span></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <div class="nav-item has-drop">
+        <button class="nav-drop-toggle" aria-expanded="false" aria-haspopup="true">About <span class="nav-caret" aria-hidden="true">&#9660;</span></button>
+        <ul class="nav-drop" role="menu">
+          <li><a href="/history/" role="menuitem">History</a></li>
+          <li><a href="/committee/" role="menuitem">Committee</a></li>
+          <li><a href="/calendar/" role="menuitem">Calendar</a></li>
+        </ul>
+      </div>
+      <div class="nav-item has-drop">
+        <button class="nav-drop-toggle" aria-expanded="false" aria-haspopup="true">Members <span class="nav-caret" aria-hidden="true">&#9660;</span></button>
+        <ul class="nav-drop" role="menu">
+          <li><a href="/new-members/" role="menuitem">New Members</a></li>
+          <li><a href="/general-faqs/" role="menuitem">FAQs</a></li>
+          <li><a href="/the-handicap-system-explained/" role="menuitem">Handicap System</a></li>
+          <li><a href="/membership/" role="menuitem">Membership</a></li>
+          <li><a href="/points-prizes/" role="menuitem">Points &amp; Prizes</a></li>
+        </ul>
+      </div>
+      <div class="nav-item has-drop">
+        <button class="nav-drop-toggle" aria-expanded="false" aria-haspopup="true">Courses <span class="nav-caret" aria-hidden="true">&#9660;</span></button>
+        <ul class="nav-drop" role="menu">
+          <li><a href="/courses/" role="menuitem">Courses</a></li>
+          <li><a href="/3k-course/" role="menuitem">3K Course</a></li>
+          <li><a href="/6k-course/" role="menuitem">6K Course</a></li>
+        </ul>
+      </div>
+      <a class="navlink" href="/volunteer/">Volunteer</a>
+      <a class="navlink" href="/results-2/" aria-current="page">Results</a>
+      <a class="navlink" href="/contact/">Contact</a>
+    </nav>
+    <div class="head-cta">
+      <a class="btn btn--ghost applink-start" href="https://season.ballinaathletics.club/" target="_blank" rel="noopener">Start times <span class="arrow">&rsaquo;</span></a>
+      <a class="btn btn--blue" href="/join/">Join now</a>
+      <button class="navtoggle" id="navtoggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Season 2026</p>
+      <h1>Results</h1>
+      <p class="lead">Live results and current handicaps from Sunday mornings at Shelly Beach. Updated after each race.</p>
+    </div>
+  </section>
+
+  <section class="section section--white" id="rbody">
+    <div class="wrap">
+      <div class="tab-bar" role="tablist" aria-label="Results sections">
+        <button class="tab-btn is-active" role="tab" aria-selected="true" aria-controls="tab-results" id="tb-results">Race results</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-handicaps" id="tb-handicaps">Handicaps</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-monthly" id="tb-monthly">Monthly prizes</button>
+      </div>
+
+      <!-- Results tab -->
+      <div class="tab-panel is-active" id="tab-results" role="tabpanel" aria-labelledby="tb-results">
+        <div class="r-controls">
+          <label for="week-sel" style="font-family:var(--mono);font-size:.78rem;color:var(--black)">Week:</label>
+          <select class="r-select" id="week-sel" aria-label="Select race week"></select>
+          <label for="dist-sel" style="font-family:var(--mono);font-size:.78rem;color:var(--black)">Distance:</label>
+          <select class="r-select" id="dist-sel" aria-label="Filter by distance">
+            <option value="">All distances</option>
+            <option value="1">1K</option>
+            <option value="3">3K</option>
+            <option value="6">6K</option>
+          </select>
+        </div>
+        <div id="results-out">
+          <div class="r-loading">Loading results&hellip;</div>
+        </div>
+      </div>
+
+      <!-- Handicaps tab -->
+      <div class="tab-panel" id="tab-handicaps" role="tabpanel" aria-labelledby="tb-handicaps" hidden>
+        <div class="hcap-filter" id="hcap-filter">
+          <button class="hcap-btn active" data-dist="">All</button>
+          <button class="hcap-btn" data-dist="1">1K</button>
+          <button class="hcap-btn" data-dist="3">3K</button>
+          <button class="hcap-btn" data-dist="6">6K</button>
+        </div>
+        <div id="handicaps-out">
+          <div class="r-loading">Loading handicaps&hellip;</div>
+        </div>
+      </div>
+
+      <!-- Monthly prizes tab -->
+      <div class="tab-panel" id="tab-monthly" role="tabpanel" aria-labelledby="tb-monthly" hidden>
+        <div id="monthly-out">
+          <div class="r-loading">Loading monthly prizes&hellip;</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="brand-name">Ballina Athletics Club<span style="font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;color:var(--blue-bright);text-transform:uppercase;display:block;margin-top:4px">Est. on Shelly Beach</span></span>
+        <p>A community handicap fun-run club on the NSW north coast. Everyone gets a fair start, and anyone can win.</p>
+      </div>
+      <div class="foot-col">
+        <h4>The club</h4>
+        <a href="/history/">History</a>
+        <a href="/committee/">Committee</a>
+        <a href="/calendar/">Calendar</a>
+        <a href="/volunteer/">Volunteer</a>
+        <a href="/results-2/">Results</a>
+      </div>
+      <div class="foot-col">
+        <h4>Members</h4>
+        <a class="applink-start" href="https://season.ballinaathletics.club/" target="_blank" rel="noopener">Season app &amp; start times</a>
+        <a href="/new-members/">New members</a>
+        <a href="/the-handicap-system-explained/">The handicap explained</a>
+        <a href="/membership/">Membership</a>
+        <a href="https://www.facebook.com/groups/ballinaathleticsclubnsw/" target="_blank" rel="noopener">Facebook group</a>
+      </div>
+    </div>
+    <p class="acknowledge">Ballina Athletics Club runs on the lands of the Bundjalung people. We acknowledge the Traditional Custodians of this Country and pay our respects to Elders past and present.</p>
+    <div class="foot-base">
+      <span>&copy; <span id="year"></span> Ballina Athletics Club</span>
+      <span>Shelly Beach &middot; Ballina &middot; NSW</span>
+    </div>
+  </div>
+</footer>
+<script src="/js/site.js" defer></script>
+</body>
+</html>
