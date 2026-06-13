@@ -106,6 +106,7 @@
      include a results section (#rbody).
      ════════════════════════════════════════════════════════════ */
   var APP_URL=’https://bac-handicap.vercel.app’;
+  var PUBLIC_RESULTS=’https://season.ballinaathletics.club/results.html’;
 
   var rbody=document.getElementById(‘rbody’);
   if(!rbody)return; /* not a results page — stop here */
@@ -264,7 +265,7 @@
       renderResults();
     })
     .catch(function(){
-      msg(‘results-out’,’r-error’,’Could not load results. <a href="’+esc(APP_URL)+’/results.html" target="_blank" rel="noopener">View in the season app &rsaquo;</a>’);
+      msg(‘results-out’,’r-error’,’Could not load results. <a href="’+esc(PUBLIC_RESULTS)+’" target="_blank" rel="noopener">View in the season app &rsaquo;</a>’);
     });
 
   var p2=fetch(APP_URL+’/api/data?type=handicaps’)
@@ -274,14 +275,14 @@
       renderHandicaps();
     })
     .catch(function(){
-      msg(‘handicaps-out’,’r-error’,’Could not load handicaps. <a href="’+esc(APP_URL)+’" target="_blank" rel="noopener">View in the season app &rsaquo;</a>’);
+      msg(‘handicaps-out’,’r-error’,’Could not load handicaps. <a href="’+esc(PUBLIC_RESULTS)+’" target="_blank" rel="noopener">View in the season app &rsaquo;</a>’);
     });
 
   var p3=fetch(APP_URL+’/api/data?type=monthly-prizes’)
     .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
     .then(function(data){renderMonthly(Array.isArray(data)?data:[]);})
     .catch(function(){
-      msg(‘monthly-out’,’r-error’,’Could not load monthly prizes. <a href="’+esc(APP_URL)+’" target="_blank" rel="noopener">View in the season app &rsaquo;</a>’);
+      msg(‘monthly-out’,’r-error’,’Could not load monthly prizes. <a href="’+esc(PUBLIC_RESULTS)+’" target="_blank" rel="noopener">View in the season app &rsaquo;</a>’);
     });
 
 })();
