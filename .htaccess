@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Legacy weekly result / handicap / winner posts → live results page
+RewriteRule ^week-[0-9].*$ /results-2/ [R=301,L]
+RewriteRule ^handicaps-for-.*$ /results-2/ [R=301,L]
+RewriteRule ^monthly-point-winners-.*$ /results-2/ [R=301,L]
+RewriteRule ^yearly-point-score.*$ /results-2/ [R=301,L]
+RewriteRule ^winners-.*ted-batterham.*$ /results-2/ [R=301,L]
+RewriteRule ^(posts|2023-2|end-of-season-bbq-2025|club-person-of-the-year-2024)/?$ /results-2/ [R=301,L]
+
+# Custom 404
+ErrorDocument 404 /404.html
