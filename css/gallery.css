@@ -1,0 +1,186 @@
+/* ===================================================
+   gallery.css  —  gallery page only, never touches site.css
+   =================================================== */
+
+/* ── Grid layout (CSS columns masonry) ── */
+#gallery-grid {
+  column-count: 4;
+  column-gap: 14px;
+  padding: 32px 0 48px;
+}
+
+@media (max-width: 1200px) {
+  #gallery-grid { column-count: 3; }
+}
+
+@media (max-width: 900px) {
+  #gallery-grid { column-count: 2; }
+}
+
+@media (max-width: 480px) {
+  #gallery-grid { column-count: 1; }
+}
+
+/* ── Individual items ── */
+.g-item {
+  display: block;
+  break-inside: avoid;
+  margin-bottom: 14px;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  /* Large tap target on mobile */
+  min-height: 44px;
+}
+
+.g-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+@media (hover: hover) {
+  .g-item:hover img {
+    transform: scale(1.03);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .g-item img {
+    transition: none;
+  }
+}
+
+/* ── Lightbox overlay ── */
+#g-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#g-overlay[hidden] {
+  display: none;
+}
+
+/* Main image */
+#g-overlay .g-img-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 64px 80px 80px;
+}
+
+#g-overlay img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+}
+
+/* ── Top bar: close + share/download ── */
+#g-overlay .g-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  z-index: 1010;
+}
+
+#g-overlay .g-top-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ── Bottom counter ── */
+#g-overlay .g-counter {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "DM Mono", ui-monospace, monospace;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.12em;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 1010;
+}
+
+/* ── Prev / Next buttons ── */
+#g-overlay .g-prev,
+#g-overlay .g-next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1010;
+}
+
+#g-overlay .g-prev { left: 10px; }
+#g-overlay .g-next { right: 10px; }
+
+/* ── Control buttons base style ── */
+#g-overlay button {
+  min-width: 44px;
+  min-height: 44px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  backdrop-filter: blur(4px);
+  transition: background 0.15s ease;
+}
+
+#g-overlay button:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+#g-overlay button:focus-visible {
+  outline: 3px solid #3B82F6;
+  outline-offset: 2px;
+}
+
+#g-overlay .g-close {
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1;
+  padding: 0 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #g-overlay button {
+    transition: none;
+  }
+}
+
+/* ── Mobile adjustments ── */
+@media (max-width: 600px) {
+  #g-overlay .g-img-wrap {
+    padding: 56px 12px 64px;
+  }
+
+  #g-overlay .g-prev { left: 4px; }
+  #g-overlay .g-next { right: 4px; }
+
+  #g-overlay button {
+    min-width: 44px;
+    padding: 0 10px;
+  }
+}
