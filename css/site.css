@@ -283,10 +283,10 @@ details.faq[open] summary{border-bottom:1px solid var(--line)}
 .tab-panel{display:none}
 .tab-panel.is-active{display:block}
 
-/* Reveal */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
-.reveal.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+/* Reveal — fail-open: visible by default, animation only when .reveal-on is armed */
+.reveal{opacity:1;transform:none}
+.reveal-on .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal-on .reveal.in{opacity:1;transform:none}
 
 /* Responsive */
 @media (max-width:1024px){

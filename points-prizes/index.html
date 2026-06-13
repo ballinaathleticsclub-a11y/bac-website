@@ -22,6 +22,21 @@
 .pts-table td:first-child{font-weight:700;color:var(--navy)}
 .pts-table td:last-child{font-family:var(--mono);color:var(--blue-deep);font-weight:600}
 </style>
+<script>
+/* Scroll-reveal: self-contained and fail-open. In <head> so an error in
+   site.js can never hide page content. Arms before paint (no flash). */
+(function(){
+  var de=document.documentElement;
+  if((window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)||!('IntersectionObserver' in window))return;
+  de.classList.add('reveal-on');
+  document.addEventListener('DOMContentLoaded',function(){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  });
+})();
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>

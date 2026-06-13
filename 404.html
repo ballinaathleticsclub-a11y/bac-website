@@ -8,6 +8,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800;900&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/site.css">
+<script>
+/* Scroll-reveal: self-contained and fail-open. In <head> so an error in
+   site.js can never hide page content. Arms before paint (no flash). */
+(function(){
+  var de=document.documentElement;
+  if((window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)||!('IntersectionObserver' in window))return;
+  de.classList.add('reveal-on');
+  document.addEventListener('DOMContentLoaded',function(){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  });
+})();
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>

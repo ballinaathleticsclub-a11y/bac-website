@@ -19,6 +19,21 @@
 .map-wrap{border-radius:18px;overflow:hidden;border:1px solid var(--line);height:400px;background:var(--sky)}
 .map-wrap iframe{width:100%;height:100%;border:0;display:block}
 </style>
+<script>
+/* Scroll-reveal: self-contained and fail-open. In <head> so an error in
+   site.js can never hide page content. Arms before paint (no flash). */
+(function(){
+  var de=document.documentElement;
+  if((window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)||!('IntersectionObserver' in window))return;
+  de.classList.add('reveal-on');
+  document.addEventListener('DOMContentLoaded',function(){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  });
+})();
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>

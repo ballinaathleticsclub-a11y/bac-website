@@ -37,6 +37,21 @@
 .hcap-btn{font-family:var(--mono);font-size:.78rem;padding:6px 14px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--navy);cursor:pointer;transition:background .15s}
 .hcap-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
 </style>
+<script>
+/* Scroll-reveal: self-contained and fail-open. In <head> so an error in
+   site.js can never hide page content. Arms before paint (no flash). */
+(function(){
+  var de=document.documentElement;
+  if((window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)||!('IntersectionObserver' in window))return;
+  de.classList.add('reveal-on');
+  document.addEventListener('DOMContentLoaded',function(){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  });
+})();
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
