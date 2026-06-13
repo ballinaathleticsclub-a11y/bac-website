@@ -18,8 +18,11 @@
 
   /* ── Dropdown nav ── */
   var dropItems=document.querySelectorAll('.nav-item.has-drop');
+  var closeTimers=new WeakMap();
 
   function openDrop(item){
+    /* Cancel any pending close for this item */
+    if(closeTimers.has(item)){clearTimeout(closeTimers.get(item));closeTimers.delete(item);}
     item.classList.add('is-open');
     item.querySelector('.nav-drop-toggle').setAttribute('aria-expanded','true');
   }
@@ -35,30 +38,32 @@
     var toggle=item.querySelector('.nav-drop-toggle');
     var drop=item.querySelector('.nav-drop');
 
-    /* Click toggle */
+    /* Click toggle — stopPropagation so document handler doesn't close on same event */
     toggle.addEventListener('click',function(e){
       e.stopPropagation();
-      var isMobile=window.innerWidth<=760;
-      if(isMobile){
-        var wasOpen=item.classList.contains('is-open');
-        closeAll(null);
-        if(!wasOpen)openDrop(item);
-      } else {
-        var wasOpen2=item.classList.contains('is-open');
-        closeAll(null);
-        if(!wasOpen2)openDrop(item);
+      var wasOpen=item.classList.contains('is-open');
+      closeAll(null);
+      if(!wasOpen)openDrop(item);
+    });
+
+    /* Hover — attach to .nav-item wrapper so trigger+panel are one region */
+    item.addEventListener('mouseenter',function(){
+      if(window.innerWidth>760){
+        /* Cancel any pending close */
+        if(closeTimers.has(item)){clearTimeout(closeTimers.get(item));closeTimers.delete(item);}
+        closeAll(item);
+        openDrop(item);
+      }
+    });
+    item.addEventListener('mouseleave',function(){
+      if(window.innerWidth>760){
+        /* Delayed close — cancelled if pointer re-enters within 200ms */
+        var t=setTimeout(function(){closeDrop(item);closeTimers.delete(item);},200);
+        closeTimers.set(item,t);
       }
     });
 
-    /* Hover (desktop only) */
-    item.addEventListener('mouseenter',function(){
-      if(window.innerWidth>760){closeAll(item);openDrop(item);}
-    });
-    item.addEventListener('mouseleave',function(){
-      if(window.innerWidth>760)closeDrop(item);
-    });
-
-    /* Keyboard: arrow down / enter from toggle opens drop */
+    /* Keyboard: arrow down / enter / space from toggle opens drop */
     toggle.addEventListener('keydown',function(e){
       if(e.key==='ArrowDown'||e.key==='Enter'||e.key===' '){
         e.preventDefault();
