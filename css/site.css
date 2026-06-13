@@ -288,6 +288,11 @@ details.faq[open] summary{border-bottom:1px solid var(--line)}
 .reveal-on .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
 .reveal-on .reveal.in{opacity:1;transform:none}
 
+/* App-offline flag — hide season-app entry points when APP_LIVE is false */
+.app-offline .applink-start,
+.app-offline .app-callout,
+.app-offline .results-full{display:none!important}
+
 /* Responsive */
 @media (max-width:1024px){
   .page-cols{grid-template-columns:1fr}
