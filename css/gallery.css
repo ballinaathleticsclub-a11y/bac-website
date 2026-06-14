@@ -184,3 +184,98 @@
     padding: 0 10px;
   }
 }
+
+/* ── Back link (album page → index) ── */
+.gallery-back {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--blue-deep);
+  text-decoration: none;
+  margin-bottom: 20px;
+  letter-spacing: 0.04em;
+}
+
+.gallery-back:hover {
+  text-decoration: underline;
+}
+
+/* ── Album index grid ── */
+.albums-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 32px 0 48px;
+}
+
+/* ── Album card ── */
+.album-card {
+  display: block;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+@media (hover: hover) {
+  .album-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .album-card {
+    transition: none;
+  }
+}
+
+/* ── Cover image ── */
+.album-cover {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.album-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+@media (hover: hover) {
+  .album-card:hover .album-cover img {
+    transform: scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .album-cover img {
+    transition: none;
+  }
+}
+
+/* ── Card info strip ── */
+.album-info {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.album-title {
+  font-family: var(--display);
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 1.1rem;
+}
+
+.album-count {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--blue-deep);
+}
