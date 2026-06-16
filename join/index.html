@@ -16,6 +16,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800;900&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="/js/flags.js"></script>
 <link rel="stylesheet" href="/css/site.css?v=3">
+<style>
+.form-embed{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--paper)}
+.form-embed iframe{width:100%;border:0;display:block;min-height:900px}
+</style>
 <script>
 /* Scroll-reveal: self-contained and fail-open. In <head> so an error in
    site.js can never hide page content. Arms before paint (no flash). */
@@ -136,9 +140,16 @@
       <div class="sec-head reveal">
         <p class="eyebrow">Registration form</p>
         <h2>Fill in your details</h2>
-        <p style="margin-top:16px">Ready to register? The form lives in the season app.</p>
-        <a class="btn btn--blue" href="https://bac-handicap.vercel.app/register.html" style="margin-top:20px;display:inline-flex">Register for the season <span class="arrow">&rarr;</span></a>
       </div>
+      <div class="form-embed reveal">
+        <iframe
+          src="https://bac-handicap.vercel.app/register.html"
+          title="Ballina Athletics Club membership registration form"
+          loading="lazy">
+          Loading form&hellip;
+        </iframe>
+      </div>
+      <p class="reveal" style="margin-top:14px;font-size:.9rem;color:var(--black)">If the form above does not load, <a href="https://bac-handicap.vercel.app/register.html" target="_blank" rel="noopener" style="color:var(--blue-deep);font-weight:600">open it directly here</a>.</p>
     </div>
   </section>
 </main>
