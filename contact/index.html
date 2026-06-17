@@ -75,7 +75,7 @@
     </nav>
     <div class="head-cta">
       <a class="btn btn--ghost applink-start" href="https://season.ballinaathletics.club/results.html" target="_blank" rel="noopener">Start times <span class="arrow">&rsaquo;</span></a>
-      <a class="btn btn--blue" href="https://bac-handicap.vercel.app/register.html">Join now</a>
+      <a class="btn btn--blue" href="/join/">Join now</a>
       <button class="navtoggle" id="navtoggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -97,11 +97,7 @@
           <p class="eyebrow">Send a message</p>
           <h2>Contact form</h2>
         </div>
-        <form class="form-grid reveal" action="https://api.web3forms.com/submit" method="POST" id="contact-form" novalidate>
-          <input type="hidden" name="access_key" value="YOUR_FORM_KEY">
-          <input type="hidden" name="subject" value="Ballina Athletics Club website enquiry">
-          <input type="hidden" name="from_name" value="BAC Website">
-          <input type="hidden" name="redirect" value="false">
+        <form class="form-grid reveal" id="contact-form" novalidate>
           <div class="form-field">
             <label for="name">Your name</label>
             <input type="text" id="name" name="name" autocomplete="name" required placeholder="Jane Smith">
@@ -190,14 +186,15 @@
     e.preventDefault();
     var btn=form.querySelector('button[type=submit]');
     btn.disabled=true;btn.textContent='Sending…';
-    fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form)})
+    var payload={name:form.name.value,email:form.email.value,message:form.message.value};
+    fetch('https://bac-handicap.vercel.app/api/data?type=contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
       .then(function(r){return r.json();})
       .then(function(d){
         if(d.success){
           fb.innerHTML='<div class="form-msg form-msg--ok">Message sent! We will get back to you shortly.</div>';
           form.reset();
         } else {
-          throw new Error(d.message||'Unknown error');
+          throw new Error(d.error||'Unknown error');
         }
       })
       .catch(function(){
