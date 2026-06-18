@@ -150,19 +150,39 @@
       if(dist&&String(r.distance)!==dist)return false;
       return true;
     });
-    rows.sort(function(a,b){
-      if(a.distance!==b.distance)return a.distance-b.distance;
-      return String(a.finishTime||'').localeCompare(String(b.finishTime||''));
-    });
     if(!rows.length){
       msg('results-out','r-empty','No results for the selected filters.');
       return;
     }
-    var html='<div class="r-table-wrap"><table class="r-table"><thead><tr>'+
-      '<th>Place</th><th>Name</th><th>Dist</th><th>Start</th><th>Finish</th><th>Pts</th>'+
-      '</tr></thead><tbody>'+
-      rows.map(function(r){
-        return '<tr>'+
+
+    var distOrder=[1,3,6], genderOrder=['Female','Male'], groups={};
+    rows.forEach(function(r){
+      var gender=r.gender||'Unknown', age=r.ageGroup||'Open';
+      var key=r.distance+'|'+gender+'|'+age;
+      if(!groups[key])groups[key]={distance:r.distance,gender:gender,ageGroup:age,runners:[]};
+      groups[key].runners.push(r);
+    });
+    var keys=Object.keys(groups).sort(function(a,b){
+      var ga=groups[a],gb=groups[b];
+      var dA=distOrder.indexOf(ga.distance),dB=distOrder.indexOf(gb.distance);
+      if(dA!==dB)return (dA===-1?99:dA)-(dB===-1?99:dB);
+      var gA=genderOrder.indexOf(ga.gender),gB=genderOrder.indexOf(gb.gender);
+      if(gA!==gB)return (gA===-1?99:gA)-(gB===-1?99:gB);
+      return ga.ageGroup.localeCompare(gb.ageGroup);
+    });
+
+    var body='', lastDist=null;
+    keys.forEach(function(key){
+      var g=groups[key];
+      if(g.distance!==lastDist){
+        body+='<tr class="group-heading"><td colspan="6">'+esc(g.distance)+'K</td></tr>';
+        lastDist=g.distance;
+      }
+      body+='<tr class="sub-heading"><td colspan="6">'+esc(g.gender)+' – '+esc(g.ageGroup)+'</td></tr>';
+      g.runners.sort(function(a,b){
+        return (parseInt(a.placing,10)||999)-(parseInt(b.placing,10)||999);
+      }).forEach(function(r){
+        body+='<tr>'+
           '<td class="placing">'+esc(r.placing||'-')+'</td>'+
           '<td class="name">'+esc(r.name)+'</td>'+
           '<td class="dist-'+esc(r.distance)+'">'+esc(r.distance)+'K</td>'+
@@ -170,8 +190,12 @@
           '<td>'+esc(r.finishTime||'--')+'</td>'+
           '<td>'+esc(r.points||'-')+'</td>'+
           '</tr>';
-      }).join('')+
-      '</tbody></table></div>';
+      });
+    });
+
+    var html='<div class="r-table-wrap"><table class="r-table"><thead><tr>'+
+      '<th>Place</th><th>Name</th><th>Dist</th><th>Start</th><th>Finish</th><th>Pts</th>'+
+      '</tr></thead><tbody>'+body+'</tbody></table></div>';
     setHtml('results-out',html);
   }
 
