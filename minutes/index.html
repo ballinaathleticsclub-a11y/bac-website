@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minutes &amp; Governance | Ballina Athletics Club</title>
+<meta name="description" content="Minutes of Annual General Meetings of Ballina Athletics Club Incorporated, held at Cherry St Bowls Club, Ballina NSW.">
+<meta property="og:title" content="Minutes &amp; Governance | Ballina Athletics Club">
+<meta property="og:description" content="Annual General Meeting minutes for Ballina Athletics Club.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_AU">
+<meta property="og:url" content="https://ballinaathletics.club/minutes/">
+<link rel="canonical" href="https://ballinaathletics.club/minutes/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800;900&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="/js/flags.js"></script>
+<link rel="stylesheet" href="/css/site.css?v=3">
+<script>
+(function(){
+  var de=document.documentElement;
+  if((window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)||!('IntersectionObserver' in window))return;
+  de.classList.add('reveal-on');
+  document.addEventListener('DOMContentLoaded',function(){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  });
+})();
+</script>
+<style>
+  /* Page-specific styles — minutes layout */
+  .minutes-block {
+    border-top: 2px solid var(--blue-bright, #2563eb);
+    padding-top: 2rem;
+    margin-bottom: 3rem;
+  }
+  .minutes-block:last-child {
+    margin-bottom: 0;
+  }
+  .minutes-meta {
+    font-family: var(--mono, monospace);
+    font-size: .75rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--blue-bright, #2563eb);
+    margin-bottom: .5rem;
+  }
+  .minutes-block h3 {
+    font-family: var(--display, sans-serif);
+    font-weight: 800;
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    line-height: .98;
+    text-transform: uppercase;
+    color: var(--navy, #0f172a);
+    margin: 0 0 1.25rem;
+  }
+  .minutes-detail {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: .75rem 2rem;
+    background: var(--surface-alt, #f1f5f9);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.75rem;
+    font-size: .92rem;
+  }
+  .minutes-detail dt {
+    font-weight: 600;
+    color: var(--navy, #0f172a);
+    margin-bottom: .1rem;
+  }
+  .minutes-detail dd {
+    margin: 0 0 .5rem;
+    color: var(--text, #334155);
+  }
+  .minutes-section {
+    margin-bottom: 1.5rem;
+  }
+  .minutes-section h4 {
+    font-family: var(--display, sans-serif);
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--navy, #0f172a);
+    margin: 0 0 .6rem;
+  }
+  .minutes-section p,
+  .minutes-section li {
+    font-size: .97rem;
+    color: var(--text, #334155);
+    line-height: 1.65;
+    margin-bottom: .4rem;
+  }
+  .minutes-section ul,
+  .minutes-section ol {
+    padding-left: 1.25rem;
+    margin: 0 0 .5rem;
+  }
+  .motion-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .9rem;
+    margin-bottom: 1rem;
+  }
+  .motion-table th {
+    font-family: var(--mono, monospace);
+    font-size: .7rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--navy, #0f172a);
+    border-bottom: 1px solid #cbd5e1;
+    padding: .45rem .6rem;
+    text-align: left;
+  }
+  .motion-table td {
+    padding: .55rem .6rem;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+    color: var(--text, #334155);
+    line-height: 1.5;
+  }
+  .motion-table tr:last-child td {
+    border-bottom: none;
+  }
+  .motion-table .result-carried {
+    font-weight: 600;
+    color: #16a34a;
+  }
+  .motion-table .result-passed {
+    font-weight: 600;
+    color: #2563eb;
+  }
+  .election-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .9rem;
+    margin-bottom: 1rem;
+  }
+  .election-table th {
+    font-family: var(--mono, monospace);
+    font-size: .7rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--navy, #0f172a);
+    border-bottom: 1px solid #cbd5e1;
+    padding: .45rem .6rem;
+    text-align: left;
+  }
+  .election-table td {
+    padding: .55rem .6rem;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+    color: var(--text, #334155);
+  }
+  .election-table tr:last-child td {
+    border-bottom: none;
+  }
+  .resolution-block {
+    background: #f8fafc;
+    border-left: 3px solid var(--blue-bright, #2563eb);
+    border-radius: 0 6px 6px 0;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .resolution-block h5 {
+    font-family: var(--mono, monospace);
+    font-size: .75rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--blue-bright, #2563eb);
+    margin: 0 0 .4rem;
+  }
+  .resolution-block p {
+    font-size: .93rem;
+    color: var(--text, #334155);
+    line-height: 1.6;
+    margin: 0 0 .5rem;
+  }
+  .resolution-block p:last-child {
+    margin-bottom: 0;
+  }
+  .resolution-wording {
+    font-style: italic;
+    background: #fff;
+    border-radius: 4px;
+    padding: .6rem .85rem;
+    border: 1px solid #e2e8f0;
+    margin: .5rem 0;
+    font-size: .9rem;
+  }
+  @media (max-width: 600px) {
+    .motion-table thead { display: none; }
+    .motion-table tr { display: block; margin-bottom: 1rem; background: #f8fafc; border-radius: 6px; padding: .6rem; }
+    .motion-table td { display: block; border: none; padding: .2rem .4rem; }
+    .motion-table td::before { content: attr(data-label); font-weight: 600; display: block; font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--navy); margin-bottom: .1rem; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="/" aria-label="Ballina Athletics Club home">
+      <span class="brand-mark" aria-hidden="true">B</span>
+      <span class="brand-name">Ballina Athletics Club<span>Est. on Shelly Beach</span></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <div class="nav-item has-drop">
+        <button class="nav-drop-toggle" aria-expanded="false" aria-haspopup="true">About <span class="nav-caret" aria-hidden="true">&#9660;</span></button>
+        <ul class="nav-drop" role="menu">
+          <li><a href="/history/" role="menuitem">History</a></li>
+          <li><a href="/committee/" role="menuitem">Committee</a></li>
+          <li><a href="/calendar/" role="menuitem">Calendar</a></li>
+          <li><a href="/gallery/" role="menuitem">Gallery</a></li>
+          <li><a href="/minutes/" role="menuitem" aria-current="page">Minutes</a></li>
+        </ul>
+      </div>
+      <div class="nav-item has-drop">
+        <button class="nav-drop-toggle" aria-expanded="false" aria-haspopup="true">Members <span class="nav-caret" aria-hidden="true">&#9660;</span></button>
+        <ul class="nav-drop" role="menu">
+          <li><a href="/new-members/" role="menuitem">New Members</a></li>
+          <li><a href="/general-faqs/" role="menuitem">FAQs</a></li>
+          <li><a href="/the-handicap-system-explained/" role="menuitem">Handicap System</a></li>
+          <li><a href="/membership/" role="menuitem">Membership</a></li>
+          <li><a href="/points-prizes/" role="menuitem">Points &amp; Prizes</a></li>
+        </ul>
+      </div>
+      <div class="nav-item has-drop">
+        <button class="nav-drop-toggle" aria-expanded="false" aria-haspopup="true">Courses <span class="nav-caret" aria-hidden="true">&#9660;</span></button>
+        <ul class="nav-drop" role="menu">
+          <li><a href="/courses/" role="menuitem">Courses</a></li>
+          <li><a href="/3k-course/" role="menuitem">3K Course</a></li>
+          <li><a href="/6k-course/" role="menuitem">6K Course</a></li>
+        </ul>
+      </div>
+      <a class="navlink" href="/volunteer/">Volunteer</a>
+      <a class="navlink" href="/results-2/">Results</a>
+      <a class="navlink" href="/contact/">Contact</a>
+    </nav>
+    <div class="head-cta">
+      <a class="btn btn--ghost applink-start" href="https://season.ballinaathletics.club/results.html" target="_blank" rel="noopener">Start times <span class="arrow">&rsaquo;</span></a>
+      <a class="btn btn--blue" href="/join/">Join now</a>
+      <button class="navtoggle" id="navtoggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">About the club</p>
+      <h1>Minutes &amp; governance</h1>
+      <p class="lead">Minutes of Annual General Meetings of Ballina Athletics Club Incorporated, newest first.</p>
+    </div>
+  </section>
+
+  <!-- ===================== 2026 AGM ===================== -->
+  <section class="section section--white">
+    <div class="wrap">
+
+      <div class="sec-head reveal">
+        <p class="eyebrow">Annual General Meeting</p>
+        <h2>2026</h2>
+      </div>
+
+      <div class="reveal" style="max-width:72ch">
+
+        <div class="minutes-block">
+
+          <div class="minutes-meta">AGM &middot; 16 June 2026</div>
+          <h3>Annual General Meeting<br>16 June 2026</h3>
+
+          <dl class="minutes-detail">
+            <div>
+              <dt>Venue</dt>
+              <dd>Cherry St Bowls Club, 68 Cherry St, Ballina NSW 2478</dd>
+            </div>
+            <div>
+              <dt>Opened</dt>
+              <dd>7:04 pm</dd>
+            </div>
+            <div>
+              <dt>Closed</dt>
+              <dd>7:53 pm</dd>
+            </div>
+            <div>
+              <dt>Chair</dt>
+              <dd>John Wade (President)</dd>
+            </div>
+            <div>
+              <dt>Minutes recorded by</dt>
+              <dd>Teddi Russell (Secretary)</dd>
+            </div>
+            <div>
+              <dt>Quorum</dt>
+              <dd>Met &mdash; 14 members present (minimum 5 required)</dd>
+            </div>
+          </dl>
+
+          <div class="minutes-section">
+            <h4>Attendance</h4>
+            <p><strong>Present:</strong> Anne Wade, John Wade, Maureen Holmes, Pat Martin, Craig Cowan, Bob Wells, Barry Saxby, Jan Saxby, Janelle Church, Scott Batterham, Teddi Russell, Heather Riordan, Ed Riordan, Steve Wright</p>
+            <p><strong>Apologies:</strong> Erin Stalenberg, Lexie Harriss, Ken Brown, Peter Brown, Alison Brown, Sue Harper, Norm Headford</p>
+          </div>
+
+          <div class="minutes-section">
+            <h4>Ratification motion</h4>
+            <p>A governance ratification motion was tabled to formally cover any past procedural discrepancies during the 2025&ndash;26 financial year.</p>
+            <table class="motion-table">
+              <thead>
+                <tr><th>No.</th><th>Motion</th><th>Moved</th><th>Seconded</th><th>Result</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="No.">3.1</td>
+                  <td data-label="Motion">That the members confirm and ratify the acts and proceedings of the committee and officers of the club for the 2025&ndash;26 financial year.</td>
+                  <td data-label="Moved">J. Wade</td>
+                  <td data-label="Seconded">B. Wells</td>
+                  <td data-label="Result"><span class="result-carried">Carried</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="minutes-section">
+            <h4>Confirmation of previous AGM minutes</h4>
+            <table class="motion-table">
+              <thead>
+                <tr><th>No.</th><th>Motion</th><th>Moved</th><th>Seconded</th><th>Result</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="No.">4.1</td>
+                  <td data-label="Motion">That the minutes of the AGM held on 13 May 2025 be confirmed as a true and accurate record.</td>
+                  <td data-label="Moved">T. Russell</td>
+                  <td data-label="Seconded">J. Saxby</td>
+                  <td data-label="Result"><span class="result-carried">Carried</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="minutes-section">
+            <h4>President&rsquo;s report &mdash; John Wade</h4>
+            <ul>
+              <li>12 months since John took over from Barry Saxby. Thanked Barry and Janice for a smooth handover.</li>
+              <li>Membership: 316 members registered for the current season, up from 307 the previous year.</li>
+              <li>Estimated average age of committee and office bearers is over 70. Members encouraged to recruit younger volunteers.</li>
+              <li>Season started well at Shelly Beach; beach starts are off for the foreseeable future due to venue availability.</li>
+              <li>Handicapping system performing very well: 66 runners and walkers recently finished the 3 km event within 1&ndash;2 minutes of each other.</li>
+            </ul>
+            <table class="motion-table">
+              <thead>
+                <tr><th>No.</th><th>Motion</th><th>Moved</th><th>Seconded</th><th>Result</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="No.">5.1</td>
+                  <td data-label="Motion">That the President&rsquo;s Report be received and adopted.</td>
+                  <td data-label="Moved">J. Wade</td>
+                  <td data-label="Seconded">T. Russell, S. Wright</td>
+                  <td data-label="Result"><span class="result-carried">Carried</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="minutes-section">
+            <h4>Treasurer&rsquo;s report &mdash; Scott Batterham</h4>
+            <ul>
+              <li>Working account balance: $6,400. Three term deposits of $5,000 each; renewal dates July and August 2026.</li>
+              <li>Online banking with two-person approval now in place, replacing the previous cheque book system.</li>
+              <li>Year-to-date: total income $6,600 &mdash; total expenditure $1,800 &mdash; net surplus $4,700.</li>
+              <li>Membership fee income: $6,300 (up in dollar terms despite fewer members, due to fee increase).</li>
+              <li>Overall financial position assessed as healthy.</li>
+            </ul>
+            <table class="motion-table">
+              <thead>
+                <tr><th>No.</th><th>Motion</th><th>Moved</th><th>Seconded</th><th>Result</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="No.">5.2</td>
+                  <td data-label="Motion">That the Treasurer&rsquo;s Report be received and adopted.</td>
+                  <td data-label="Moved">S. Batterham</td>
+                  <td data-label="Seconded">C. Cowan</td>
+                  <td data-label="Result"><span class="result-carried">Carried</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="minutes-section">
+            <h4>Special resolutions</h4>
+            <p>Five special resolutions were put under the Associations Incorporation Act 2009 (NSW). Each required a 75% majority (11 of 14 members present). All were put to a show of hands.</p>
+
+            <div class="resolution-block">
+              <h5>Special Resolution 1 &mdash; Rule 17(1): Holding of the AGM</h5>
+              <p>To allow flexibility in when the AGM is held, rather than being locked to a specific month. The constitution previously specified March.</p>
+              <p class="resolution-wording">&ldquo;With the exception of the first annual general meeting of the club, the club shall, at least once in each calendar year and within a period of six months after the expiration of each financial year of the club, convene an annual general meeting of its members.&rdquo;</p>
+              <p><strong>Moved:</strong> J. Wade &nbsp;&nbsp;<strong>Seconded:</strong> B. Wells &nbsp;&nbsp;<strong>Result: <span class="result-passed">Passed</span></strong></p>
+            </div>
+
+            <div class="resolution-block">
+              <h5>Special Resolution 2 &mdash; Rule 29(3): End of Financial Year</h5>
+              <p>To formally set the end of the club&rsquo;s financial year to align with the operating season.</p>
+              <p class="resolution-wording">&ldquo;The financial year of the club shall end on the 31st of December each year.&rdquo;</p>
+              <p><strong>Moved:</strong> J. Wade &nbsp;&nbsp;<strong>Seconded:</strong> B. Saxby &nbsp;&nbsp;<strong>Result: <span class="result-passed">Passed</span></strong></p>
+            </div>
+
+            <div class="resolution-block">
+              <h5>Special Resolution 3 &mdash; Rule 33: Service of Notices</h5>
+              <p>To formally authorise email as a legal method of club communication, replacing the requirement to serve notices by post.</p>
+              <p class="resolution-wording">&ldquo;A notice may be served by the club on any member by sending it to the email address currently nominated by the member in the register of members.&rdquo;</p>
+              <p><strong>Moved:</strong> J. Wade &nbsp;&nbsp;<strong>Seconded:</strong> T. Russell, E. Riordan, J. Saxby &nbsp;&nbsp;<strong>Result: <span class="result-passed">Passed</span></strong></p>
+            </div>
+
+            <div class="resolution-block">
+              <h5>Special Resolution 4 &mdash; New Rule 34: Non-Profit and Dissolution Clause</h5>
+              <p>A mandatory requirement of NSW Fair Trading and the ATO to maintain the club&rsquo;s income tax exemption as a community-based organisation.</p>
+              <p class="resolution-wording">(a) The income and property of the club shall be applied solely towards the promotion of the objects of the club, and no portion shall be paid or transferred, directly or indirectly, by way of profit to any member of the club.<br><br>(b) In the event of the winding up of the club, any surplus property must be transferred to the Westpac Rescue Helicopter Service.</p>
+              <p><strong>Moved:</strong> J. Wade &nbsp;&nbsp;<strong>Seconded:</strong> P. Martin, S. Wright &nbsp;&nbsp;<strong>Result: <span class="result-passed">Passed</span></strong></p>
+            </div>
+
+            <div class="resolution-block">
+              <h5>Special Resolution 5 &mdash; Child Safety Clause (Working With Children)</h5>
+              <p>To incorporate NSW child protection requirements into the club&rsquo;s rules.</p>
+              <p class="resolution-wording">&ldquo;The club shall comply with all relevant requirements regarding child protection. The committee shall require any committee member who has access to the contact details of members to provide a valid NSW Working With Children Check (WWCC) and to undergo verification as a condition of their role.&rdquo;</p>
+              <p><strong>Moved:</strong> J. Wade &nbsp;&nbsp;<strong>Seconded:</strong> H. Riordan &nbsp;&nbsp;<strong>Result: <span class="result-passed">Passed</span></strong></p>
+            </div>
+          </div>
+
+          <div class="minutes-section">
+            <h4>Election of committee for 2026&ndash;27</h4>
+            <p>The President declared all positions vacant. Returning Officer: Maureen Holmes.</p>
+            <table class="election-table">
+              <thead>
+                <tr><th>Position</th><th>Elected</th><th>Notes</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>President</td><td>John Wade</td><td>Re-elected</td></tr>
+                <tr><td>Vice President</td><td>Steve Wright &amp; Barry Saxby</td><td>Away July/August; committee to provide support</td></tr>
+                <tr><td>Secretary</td><td>Teddi Russell</td><td>Re-elected</td></tr>
+                <tr><td>Treasurer</td><td>Scott Batterham</td><td>Re-elected</td></tr>
+                <tr><td>Assistant Treasurer</td><td>Lexie Harriss</td><td>Re-elected (apology)</td></tr>
+                <tr><td>Handicapper</td><td>Norm Headford</td><td>Re-elected (apology). Transition planning underway.</td></tr>
+                <tr><td>Membership Officer</td><td>Maureen Holmes</td><td>Re-elected</td></tr>
+                <tr><td>Public Officer</td><td>Teddi Russell</td><td>Re-elected</td></tr>
+                <tr><td>General Committee</td><td colspan="2">Peter Brown, Anne Wade, Ken Brown, Pat Martin, Jan Saxby, Janelle Church, Ed Riordan, Bob Wells</td></tr>
+              </tbody>
+            </table>
+            <p>The President noted this was the largest AGM turnout in recent memory.</p>
+          </div>
+
+        </div><!-- /minutes-block -->
+      </div><!-- /reveal -->
+    </div>
+  </section>
+
+  <!-- ===================== 2025 AGM ===================== -->
+  <section class="section section--alt">
+    <div class="wrap">
+
+      <div class="sec-head reveal">
+        <p class="eyebrow">Annual General Meeting</p>
+        <h2>2025</h2>
+      </div>
+
+      <div class="reveal" style="max-width:72ch">
+        <div class="minutes-block">
+
+          <div class="minutes-meta">AGM &middot; 13 May 2025</div>
+          <h3>Annual General Meeting<br>13 May 2025</h3>
+
+          <dl class="minutes-detail">
+            <div>
+              <dt>Venue</dt>
+              <dd>Cherry St Bowls Club, 68 Cherry St, Ballina NSW 2478</dd>
+            </div>
+            <div>
+              <dt>Opened</dt>
+              <dd>7:00 pm</dd>
+            </div>
+            <div>
+              <dt>Closed</dt>
+              <dd>7:45 pm</dd>
+            </div>
+          </dl>
+
+          <div class="minutes-section">
+            <h4>Attendance</h4>
+            <p><strong>Present:</strong> Janelle Church, Maureen Holmes, Jan Saxby, Barry Saxby, Lexie Harriss, Anne Wade, John Wade, Norman Headford, Patrick Martin, Fiona Batterham</p>
+            <p><strong>Apologies:</strong> Peter Brown, Janice Woods, Ken Brown</p>
+          </div>
+
+          <div class="minutes-section">
+            <h4>Confirmation of previous AGM minutes</h4>
+            <p>Minutes of the 2024 AGM confirmed. Motioned by Maureen Holmes, seconded by Janice Saxby.</p>
+          </div>
+
+          <div class="minutes-section">
+            <h4>Reports</h4>
+            <ul>
+              <li><strong>President&rsquo;s Report:</strong> Barry Saxby presented the yearly report for 2024. Moved by Barry, seconded by Alexia Harriss.</li>
+              <li><strong>Treasurer&rsquo;s Report:</strong> Presented and accepted. Moved by Teddi Russell, seconded by John Wade.</li>
+              <li><strong>Secretary&rsquo;s / Membership Report:</strong> Overview of membership and administrative matters. Seconded by John Wade.</li>
+            </ul>
+          </div>
+
+          <div class="minutes-section">
+            <h4>Election of office bearers</h4>
+            <table class="election-table">
+              <thead>
+                <tr><th>Position</th><th>Elected</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>President</td><td>John Wade</td></tr>
+                <tr><td>Vice President</td><td>Barry Saxby</td></tr>
+                <tr><td>Secretary</td><td>Teddi Russell</td></tr>
+                <tr><td>Treasurer</td><td>Fiona Batterham</td></tr>
+                <tr><td>Assistant Treasurer</td><td>Alexia Harriss</td></tr>
+                <tr><td>Handicapper</td><td>Norm Headford</td></tr>
+                <tr><td>Membership Officer</td><td>Maureen Holmes</td></tr>
+                <tr><td>Public Officer</td><td>Teddi Russell</td></tr>
+                <tr><td>General Committee</td><td>Peter Brown, Anne Wade, Ken Brown, Pat Martin, Janelle Church, Jan Saxby</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="minutes-section">
+            <h4>Membership fees</h4>
+            <p>Fees remained unchanged: single member $20.00, family membership $50.00. The club&rsquo;s financial position remained strong.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 2024 AGM ===================== -->
+  <section class="section section--white">
+    <div class="wrap">
+
+      <div class="sec-head reveal">
+        <p class="eyebrow">Annual General Meeting</p>
+        <h2>2024</h2>
+      </div>
+
+      <div class="reveal" style="max-width:72ch">
+        <div class="minutes-block">
+
+          <div class="minutes-meta">AGM &middot; 5 May 2024</div>
+          <h3>Annual General Meeting<br>5 May 2024</h3>
+
+          <dl class="minutes-detail">
+            <div>
+              <dt>Venue</dt>
+              <dd>Cherry Street Sports Club, Ballina</dd>
+            </div>
+            <div>
+              <dt>Opened</dt>
+              <dd>11:25 am</dd>
+            </div>
+            <div>
+              <dt>Closed</dt>
+              <dd>11:55 am</dd>
+            </div>
+            <div>
+              <dt>Chair</dt>
+              <dd>Barry Saxby (President)</dd>
+            </div>
+          </dl>
+
+          <div class="minutes-section">
+            <h4>Attendance</h4>
+            <p><strong>Present:</strong> Barry Saxby, Janice Saxby, John Wade, Teddi Russell, Pat Martin, Nathan Henderson, Alexia Harriss, Maureen Holmes</p>
+            <p><strong>Apologies:</strong> Janice Woods, Ken Brown, Wendy Gilmore, Norm Headford, Anne Wade</p>
+          </div>
+
+          <div class="minutes-section">
+            <h4>Confirmation of previous AGM minutes</h4>
+            <p>Minutes of the AGM held 14 February 2023 were tabled by past secretary Maureen Holmes and accepted. Moved by Janice Saxby, seconded by John Wade.</p>
+          </div>
+
+          <div class="minutes-section">
+            <h4>Reports</h4>
+            <ul>
+              <li><strong>President&rsquo;s Report:</strong> Barry Saxby presented yearly report for 2023. Moved by Barry, seconded by Pat Martin.</li>
+              <li><strong>Secretary&rsquo;s Report:</strong> Maureen Holmes presented yearly report for 2024. Moved by Barry, seconded by Alexia Harriss.</li>
+              <li><strong>Treasurer&rsquo;s Report:</strong> Read by Teddi Russell. Moved by Barry, seconded by Maureen Holmes.</li>
+            </ul>
+          </div>
+
+          <div class="minutes-section">
+            <h4>Election of office bearers</h4>
+            <p>President Barry Saxby vacated the chair. Returning Officer: Maureen Holmes.</p>
+            <table class="election-table">
+              <thead>
+                <tr><th>Position</th><th>Elected</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>President</td><td>Barry Saxby</td></tr>
+                <tr><td>Vice President</td><td>John Wade</td></tr>
+                <tr><td>Secretary</td><td>Teddi Russell</td></tr>
+                <tr><td>Treasurer</td><td>To be confirmed</td></tr>
+                <tr><td>Assistant Treasurer</td><td>Alexia Harriss</td></tr>
+                <tr><td>Membership Officer</td><td>Maureen Holmes</td></tr>
+                <tr><td>Recorder / Handicapper</td><td>Norm Headford</td></tr>
+                <tr><td>Equipment Officer</td><td>Pat Martin</td></tr>
+                <tr><td>Public Officer</td><td>Maureen Holmes</td></tr>
+                <tr><td>General Committee</td><td>Anne Wade, Ken Brown, Nathan Henderson</td></tr>
+              </tbody>
+            </table>
+            <p>Bank signatories confirmed: President Barry Saxby, Treasurer Janice Woods, Public Officer Maureen Holmes, Secretary Teddi Russell.</p>
+          </div>
+
+          <div class="minutes-section">
+            <h4>Membership fees</h4>
+            <p>Fees remained unchanged: single member $20.00, family membership $50.00. The club&rsquo;s financial position remained strong.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="brand-name">Ballina Athletics Club<span style="font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;color:var(--blue-bright);text-transform:uppercase;display:block;margin-top:4px">Est. on Shelly Beach</span></span>
+        <p>A community handicap fun-run club on the NSW north coast. Everyone gets a fair start, and anyone can win.</p>
+      </div>
+      <div class="foot-col">
+        <h4>The club</h4>
+        <a href="/history/">History</a>
+        <a href="/committee/">Committee</a>
+        <a href="/calendar/">Calendar</a>
+        <a href="/volunteer/">Volunteer</a>
+        <a href="/results-2/">Results</a>
+      </div>
+      <div class="foot-col">
+        <h4>Members</h4>
+        <a class="applink-start" href="https://season.ballinaathletics.club/results.html" target="_blank" rel="noopener">Season app &amp; start times</a>
+        <a href="/new-members/">New members</a>
+        <a href="/the-handicap-system-explained/">The handicap explained</a>
+        <a href="/membership/">Membership</a>
+        <a href="https://www.facebook.com/groups/ballinaathleticsclubnsw/" target="_blank" rel="noopener">Facebook group</a>
+      </div>
+    </div>
+    <p class="acknowledge">Ballina Athletics Club runs on the lands of the Bundjalung people. We acknowledge the Traditional Custodians of this Country and pay our respects to Elders past and present.</p>
+    <div class="foot-base">
+      <span>&copy; <span id="year"></span> Ballina Athletics Club</span>
+      <span>Shelly Beach &middot; Ballina &middot; NSW</span>
+    </div>
+  </div>
+</footer>
+<script src="/js/site.js?v=3" defer></script>
+</body>
+</html>

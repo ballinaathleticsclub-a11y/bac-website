@@ -5,6 +5,7 @@
   <url><loc>https://ballinaathletics.club/committee/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ballinaathletics.club/calendar/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://ballinaathletics.club/gallery/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ballinaathletics.club/minutes/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ballinaathletics.club/general-faqs/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://ballinaathletics.club/new-members/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ballinaathletics.club/the-handicap-system-explained/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
